@@ -2,6 +2,7 @@ package com.schoolmanagement.dto;
 
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +13,9 @@ public class StudentDTO {
     private String lastName;
     private LocalDate dateOfBirth;
     private String gender;
-    private String level;
-    private String field;
-    private String classroom;
+    private String nationality; // Nouvelle propriété
+    private String level; // Niveau scolaire
+    private String classroom; // Classe
+    private String field; // Filière
+    private List<String> options; // Options choisies
 }
