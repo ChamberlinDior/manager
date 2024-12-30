@@ -8,7 +8,7 @@ import java.util.List;
  * Entity representing a student in the school management system.
  */
 @Entity
-@Table(name = "students") // Explicit table naming for clarity
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -34,13 +34,13 @@ public class Student {
     @Column(name = "photo", columnDefinition = "LONGBLOB", nullable = true)
     private byte[] photo;
 
-    @Column(name = "level", nullable = false, length = 20) // E.g., Primary, Secondary, High School
+    @Column(name = "level", nullable = false, length = 20)
     private String level;
 
-    @Column(name = "classroom", nullable = false, length = 20) // E.g., Grade 6, Grade 12
+    @Column(name = "classroom", nullable = false, length = 20)
     private String classroom;
 
-    @Column(name = "field", length = 50) // E.g., Science, Literature
+    @Column(name = "field", length = 50)
     private String field;
 
     @ElementCollection
@@ -64,22 +64,12 @@ public class Student {
     })
     private Tutor tutor;
 
-    // Getters and Setters with Javadoc for better documentation
+    // Getters and Setters
 
-    /**
-     * Gets the ID of the student.
-     *
-     * @return the student ID.
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     * Sets the ID of the student.
-     *
-     * @param id the student ID.
-     */
     public void setId(Long id) {
         this.id = id;
     }

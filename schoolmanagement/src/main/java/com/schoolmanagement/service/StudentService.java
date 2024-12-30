@@ -11,7 +11,6 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
-    // Constructeur explicite
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
@@ -32,6 +31,12 @@ public class StudentService {
 
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
+    }
+
+    public void updateStudentPhoto(Long id, byte[] photo) {
+        Student student = getStudentById(id);
+        student.setPhoto(photo);
+        studentRepository.save(student);
     }
 
     private void validateStudent(Student student) {
