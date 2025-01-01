@@ -1,9 +1,11 @@
 package com.schoolmanagement.controller;
 
+import com.schoolmanagement.dto.EmployeeDTO;
 import com.schoolmanagement.model.Employee;
 import com.schoolmanagement.service.EmployeeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -12,7 +14,6 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    // Constructeur explicite
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -28,8 +29,13 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
-        return ResponseEntity.ok(employeeService.saveEmployee(employee));
+    public ResponseEntity<Employee> saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        return ResponseEntity.ok(employeeService.saveEmployee(employeeDTO));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        return ResponseEntity.ok(employeeService.updateEmployee(id, employeeDTO));
     }
 
     @DeleteMapping("/{id}")
