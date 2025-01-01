@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  school-db:
+    image: mysql:8.0
+    container_name: school-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: school
+    ports:
+      - "3302:3306"
+    volumes:
+      - school-db-data:/var/lib/mysql
+
+  school-app:
+    build: .
+    container_name: school-app
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://school-db:3306/school
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - school-db
+
+volumes:
+  school-db-data:
